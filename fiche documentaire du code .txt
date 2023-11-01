@@ -1,0 +1,79 @@
+Fiche Documentaire du Code de Traduction Automatique Anglais-Français
+
+Auteur : AYA CHEBBAB
+
+Date de Création : 23/07/2023
+
+
+
+---
+
+# Fiche Documentaire - Modèle de Traduction Automatique
+
+## Introduction
+Cette fiche documentaire présente le modèle de traduction automatique utilisé dans le cadre du projet. Le modèle est basé sur l'architecture Transformer, une technologie de pointe en traitement automatique du langage naturel (NLP) développée par Hugging Face. Il est spécifiquement conçu pour traduire des textes de l'anglais vers le français.
+
+**Objectif :** Faciliter la compréhension et l'utilisation du modèle de traduction automatique.
+
+## Composants Principaux
+### Importation des Bibliothèques
+
+# Importation des bibliothèques nécessaires
+import torch
+from transformers import MarianMTModel, MarianTokenizer
+```
+Le code commence par l'importation des bibliothèques essentielles, notamment PyTorch et les composants de Hugging Face Transformers.
+
+### Configuration du Modèle
+```python
+# Nom du modèle à utiliser
+model_name = "yasmineelabbar/marian-finetuned-kde4-en-to-fr-accelerate"
+# Chargement du modèle
+model = MarianMTModel.from_pretrained(model_name)
+# Chargement du tokenizer
+tokenizer = MarianTokenizer.from_pretrained(model_name)
+```
+Dans cette section, la configuration du modèle est définie. Le nom du modèle, `yasmineelabbar/marian-finetuned-kde4-en-to-fr-accelerate`, est spécifié. Le modèle est ensuite chargé, ainsi que le tokenizer correspondant.
+
+### Fonction de Traduction
+
+def translate_text(input_text):
+    inputs = tokenizer.encode(input_text, return_tensors="pt")
+    translation = model.generate(inputs, max_length=100)[0]
+    translated_text = tokenizer.decode(translation, skip_special_tokens=True)
+    return translated_text
+```
+Une fonction `translate_text` est définie pour effectuer la traduction. Elle prend un texte en anglais en entrée, le tokenise, génère une traduction en français, et renvoie le texte traduit.
+
+## Utilisation
+Pour utiliser ce modèle de traduction automatique, suivez ces étapes :
+1. Assurez-vous d'avoir les bibliothèques Python requises installées.
+2. Importez le modèle et le tokenizer comme indiqué dans la section "Configuration du Modèle".
+3. Utilisez la fonction `translate_text` pour traduire du texte de l'anglais vers le français.
+
+Exemple d'utilisation :
+
+input_text = "Hello, how are you?"
+translated_text = translate_text(input_text)
+print(translated_text)
+
+
+## Modèle Hébergé
+Le modèle final que nous avons entraîné peut être trouvé sur Hugging Face Hub sous le nom `yasmineelabbar/marian-finetuned-kde4-en-to-fr-accelerate`. Vous pouvez le charger directement depuis Hugging Face Hub pour l'utiliser dans vos projets.
+
+
+##Remarques :Défis et Limitations
+Défis:
+ Nous avons également dû relever plusieurs défis au cours de notre projet .Tout d'abord, nous avons constaté des problèmes de qualité dans les traductions générées par notre modèle. Cela a nécessité des ajustements dans les hyperparamètres et les données d'entraînement pour améliorer la précision des traductions. De plus, nous avons fait face à un surajustement (overfitting) du modèle, où celui-ci semblait bien performer sur les données d'entraînement mais moins bien sur de nouvelles données. Pour résoudre ce problème, nous avons ajusté la régularisation et les techniques d'augmentation des données.
+Limitations:
+Sensibilité au Contexte
+La faible compréhension sémantique  
+La traduction idiomatique 
+Tous ça a été bien expliqué en détail dans le rapport
+
+## Conclusion
+Ce modèle de traduction automatique basé sur l'architecture Transformer permet des traductions de haute qualité de l'anglais vers le français. En suivant les étapes d'utilisation mentionnées ci-dessus ou en chargeant le modèle depuis Hugging Face Hub, vous pouvez facilement intégrer ce modèle dans vos projets de traduction ou d'autres applications nécessitant une traduction automatique.
+
+---
+
+Cette fiche documentaire fournit une vue d'ensemble complète du modèle de traduction automatique, de sa configuration à son utilisation, tout en mettant en évidence son hébergement sur Hugging Face Hub pour une utilisation pratique.

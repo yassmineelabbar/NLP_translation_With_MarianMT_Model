@@ -1,0 +1,45 @@
+
+# Fiche Documentaire - Interface de l'Application de Traduction Anglais-Français
+
+Auteur: YASMINE EL ABBAR 
+Date de création: 08/09/2023
+## Introduction
+Cette fiche documentaire présente le code de l'interface d'une application de traduction anglais-français. L'application utilise le modèle de traduction `yasmineelabbar/marian-finetuned-kde4-en-to-fr-accelerate` basé sur l'architecture des Transformers. L'interface est développée en utilisant la bibliothèque Streamlit, permettant aux utilisateurs de saisir du texte en anglais pour obtenir une traduction en français.
+
+## Composants Principaux
+### Importation des Bibliothèques
+Le code commence par l'importation des bibliothèques nécessaires, notamment Streamlit pour l'interface utilisateur, Pillow (PIL) pour la gestion d'images, et les composants de Hugging Face Transformers pour le modèle de traduction.
+
+### Chargement du Modèle et du Tokenizer
+Le modèle de traduction `yasmineelabbar/marian-finetuned-kde4-en-to-fr-accelerate` est chargé à partir de Hugging Face Transformers, ainsi que son tokenizer correspondant.
+
+### Fonction de Traduction (`translate_text`)
+Une fonction `translate_text` est définie pour effectuer la traduction. Elle prend en entrée le texte en anglais, l'encode en utilisant le tokenizer, génère la traduction avec une longueur maximale de 100 caractères en français, puis décode la sortie pour obtenir le texte traduit.
+
+### Fonction Principale (`main`)
+La fonction principale `main` est définie. Elle crée l'interface utilisateur à l'aide de Streamlit.
+
+### Affichage du Logo
+Le logo de l'application, nommé "Transloom Logo", est affiché à l'aide de PIL.
+
+### Saisie de Texte
+Les utilisateurs peuvent saisir du texte en anglais dans une zone de texte dédiée.
+
+### Bouton de Traduction
+Un bouton "Translate" permet de déclencher la traduction lorsque l'utilisateur le presse.
+
+### Gestion des Erreurs
+Si l'utilisateur tente de traduire sans saisir de texte, un avertissement est affiché.
+
+### Affichage de la Traduction
+La traduction obtenue est affichée en succès, avec un encart d'information.
+
+### Exécution du Code
+Le code principal est exécuté dans une condition `if __name__ == "__main__":`, permettant de lancer l'application lorsqu'il est exécuté en tant que script.
+
+## Conclusion
+Cette fiche documentaire résume les composants principaux du code de l'interface de l'application de traduction anglais-français. Elle met en évidence les bibliothèques utilisées, les fonctions clés, et la manière dont l'interface utilisateur est construite pour offrir une expérience de traduction conviviale.
+
+---
+
+N'hésitez pas à personnaliser cette fiche documentaire en ajoutant plus de détails spécifiques à votre projet si nécessaire.
